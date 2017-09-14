@@ -1,4 +1,84 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit(reg)" #reg="ngForm">
+    <div>
+      <div>
+        <label> StUdent Number </label>
+        <input type="text" ngModel name="studNo" #studno="ngModel" required pattern="[0-9]+">
+      </div>
+
+      <div>
+        <label> Student First Name </label>
+        <input type="text" ngModel name="studFname" #studfname="ngModel" required pattern="[A-z\s]+"><br>
+      </div>
+
+      <div>
+        <label> Student Last Name </label>
+        <input type="text" ngModel name="studLname" #studlname="ngModel" required pattern="[A-z\s]+"><br>
+      </div>
+
+      <div>
+        <label> Student Program </label>
+        <input type="text" ngModel name="studProg" #studprog="ngModel" required pattern="[A-z\s]+"><br>
+      </div>
+
+      <div>
+        <label> Student Year </label>
+        <input type="text" ngModel name="studYr" #studyr="ngModel" required pattern="[1-5]"><br>
+      </div>
+    </div>
+
+
+
+
+    <div id="options">
+      <button id="addStudents" (click)="addStudentEntry()">
+      Add Student Entry 
+      </button>
+      <!-- (click)="addStudentEntry()" -->
+
+
+      <button id="listStudents" (click)="listStudents()">
+      List Students
+    </button>
+    </div>
+  </form>
+</div>
+
 <div>
+  {{messages}}
+</div>
+
+<div *ngIf="printing">
+  <table>
+
+    <thead>
+      <tr>
+        <th>Student Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Program</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let studentRecord of studentCollection">
+        <td>{{ studentRecord.studNumber }}</td>
+        <td>{{ studentRecord.studFirstName }}</td>
+        <td>{{ studentRecord.studLastName }}</td>
+        <td>{{ studentRecord.studProgram }}</td>
+        <td>{{ studentRecord.studYear }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+
+
+
+
+<!-- <div>
   <label> Student Number </label> <input type = "text" [(ngModel)]="studNo"><br>
   <label> Student First Name </label> <input type = "text" [(ngModel)]="studFname"><br>
   <label> Student Last Name </label> <input type = "text" [(ngModel)]="studLname"><br>
@@ -43,4 +123,4 @@ List Students
   </tr>
 </tbody>
 </table>
-</div>
+</div> -->
